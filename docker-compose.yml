@@ -15,7 +15,6 @@ services:
     depends_on:
       - php
       - mysql
-    restart: always
     networks:
       - frontend
       - backend
@@ -30,6 +29,30 @@ services:
       - ./docker/php:/usr/local/etc/php/php.ini:ro
       - ./src/:/var/www/html/
     networks:
+      - backend
+
+  redis:
+    image: redis:alpine
+    container_name: redis
+    ports:
+      - "6379:6379"
+    networks:
+      - backend
+
+  phpRedisAdmin:
+    image: erikdubbelboer/phpredisadmin
+    container_name: phpredisadmin
+    ports:
+      - "4000:80"
+    depends_on:
+      - redis
+    environment:
+      - ADMIN_USER=admin
+      - ADMIN_PASS=admin
+      - REDIS_1_HOST=redis
+      - REDIS_1_PORT=6379
+    networks:
+      - frontend
       - backend
 
   mysql:

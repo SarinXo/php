@@ -7,7 +7,7 @@
     public function __construct(){
         $host = "mysql";
         $port = "9907";
-        $dbname = "lab1";
+        $dbname = "firsova";
         $charset = "utf8";
         $dbuser = "root";
         $dbpass = "root";
