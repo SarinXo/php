@@ -1,0 +1,25 @@
+.books
+{
+	h2
+	{
+		font-size: 50px;
+	}
+}
+
+.book
+{
+	background-color: palegreen;
+	margin: 15px;
+	height: 150px;
+
+	p
+	{
+		margin: 2px;
+		padding: 5px;
+	}
+
+	&-title
+	{
+		font-size: 27px;
+	}
+}
