@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="/css/styles/signupin.css">
+
+	<title>Регистрация - Вход</title>
+</head>
+<body>
+<div class="wrapper">
+	<div class="title-text">
+		<div class="title login">Вход</div>
+		<div class="title signup">Регистрация</div>
+	</div>
+	<div class="form-container">
+		<div class="slide-controls">
+			<input type="radio" name="slide" id="login" checked>
+			<input type="radio" name="slide" id="signup">
+			<label for="login" class="slide login">Вход</label>
+			<label for="signup" class="slide signup">Регистрация</label>
+			<div class="slider-tab"></div>
+		</div>
+		<div class="form-inner">
+			<form id="login-form" class="login">
+				<div class="field">
+					<input name="login" type="text" placeholder="Логин" required autocomplete="off">
+				</div>
+				<div class="field">
+					<input name="password" type="password" placeholder="Пароль" required autocomplete="off">
+				</div>
+				<div class="field btn">
+					<div class="btn-layer"></div>
+					<input type="submit" value="Войти">
+				</div>
+			</form>
+			<form id="signup-form" class="signup">
+				<div class="field">
+					<input name="name" type="text" placeholder="ФИО" required autocomplete="off">
+				</div>
+				<div class="field">
+					<input name="address" type="text" placeholder="Адрес" required autocomplete="off">
+				</div>
+				<div class="field">
+					<input name="city" type="text" placeholder="Город" required autocomplete="off">
+				</div>
+				<div class="field">
+					<input name="login" type="text" placeholder="Логин" required autocomplete="off">
+				</div>
+				<div class="field">
+					<input name="password" type="password" placeholder="Пароль" required autocomplete="off">
+				</div>
+				<div class="field btn">
+					<div class="btn-layer"></div>
+					<input type="submit" value="Зарегистрироваться">
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript" src="/js/libs/jquery-3.7.1.min.js"></script>
+<script type="module" src="/js/scripts/signupin.js"></script>
+</body>
+</html>

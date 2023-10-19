@@ -3,6 +3,10 @@
 
     $searchType = $_REQUEST["searchType"];
 
+    $Id = $connection->prepare("
+        SELECT customer_id
+    ");
+
     switch ($searchType) {
         case "task1":
             $query = $connection->prepare("

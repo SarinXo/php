@@ -1,5 +1,5 @@
 <?php
-/*require_once(realpath(dirname(__FILE__) . '/../../php/db.php'));
+require_once(realpath(dirname(__FILE__) . '/../../php/db.php'));
 
 if(!isset($_COOKIE['login']) || !isset($_COOKIE['token']))
 {
@@ -12,7 +12,7 @@ if($_COOKIE['token'] != $redis->hget('authentication:' . $login, 'token'))
 {
     header('Location: http://localhost/pages/signupin.html');
 }
-*/?>
+?>
 
 <!DOCTYPE html>
 <html lang="en">

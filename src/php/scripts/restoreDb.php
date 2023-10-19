@@ -1,18 +1,32 @@
 <?php
-    require_once(realpath(dirname(__FILE__) . '/../db.php'));
     header('Refresh: 2; URL=http://localhost/pages/homepage/homepage.php');
     echo '<senter>Успешный бекап. Возврат на главную страницу...</senter> ';
 
+
+$host = 'mysql';
+$charset = 'utf8mb4';
+$dbuser = 'root';
+$dbpass = 'root';
+$conn = new PDO("mysql:host=$host;charset=$charset", $dbuser, $dbpass);
+
+require_once(realpath(dirname(__FILE__) . '/../libs/autoload.php'));
+
+$redis = new Predis\Client([
+    'scheme' => 'tcp',
+    'host' => 'redis',
+    'port' => 6379,
+]);
+
 	$redis->flushdb();
 
-	$deleteDb = $connection->prepare
+	$deleteDb = $conn->prepare
 	('
-		DROP DATABASE `firsova`;
+		DROP DATABASE IF EXISTS `firsova`;
 	');
 
 	$deleteDb->execute() or die(print_r($deleteDb->errorInfo()));
 
-	$initDb = $connection->prepare
+	$initDb = $conn->prepare
 	('
 		SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 		START TRANSACTION;

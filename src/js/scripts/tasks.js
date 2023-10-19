@@ -10,7 +10,7 @@ $(document).ready( function(){
 
         $.ajax({
             type: 'GET',
-            url: '/pages/tasks/handler.php',
+            url: '/pages/tasks/handler2.php',
             data: { searchType: formData [0]["value"]},
             success: function(html)
             {
