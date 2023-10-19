@@ -1,3 +1,19 @@
+<?php
+/*require_once(realpath(dirname(__FILE__) . '/../../php/db.php'));
+
+if(!isset($_COOKIE['login']) || !isset($_COOKIE['token']))
+{
+    header('Location: http://localhost/pages/signupin.html');
+}
+
+$login = $_COOKIE['login'];
+
+if($_COOKIE['token'] != $redis->hget('authentication:' . $login, 'token'))
+{
+    header('Location: http://localhost/pages/signupin.html');
+}
+*/?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -40,7 +56,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="/php/scripts/books/reloadDb.php">Восстановить базу данных</a>
+                        <a class="nav-link" href="/php/scripts/restoreDb.php">Восстановить базу данных</a>
                     </li>
 
 				</ul>

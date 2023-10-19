@@ -1,5 +1,5 @@
 <?php
-	require_once("../db.php");
+require_once(realpath(dirname(__FILE__) . '/../db.php'));
 
 	if(isset($_COOKIE['login']) && isset($_COOKIE['token']))
 	{
@@ -8,8 +8,6 @@
 
 		if($redistoken == $_COOKIE['token'] && $_COOKIE['login'] == $_REQUEST['login'])
 		{
-            var_dump($_REQUEST);
-            var_dump($_COOKIE);
 			$success['Message'] = "Success";
 			die(print(json_encode($success)));
 		}

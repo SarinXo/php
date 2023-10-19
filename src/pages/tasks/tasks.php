@@ -38,7 +38,7 @@
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" href="/php/scripts/books/reloadDb.php">Восстановить базу данных</a>
+          <a class="nav-link" href="/php/scripts/restoreDb.php">Восстановить базу данных</a>
         </li>
       </ul>
     </div>

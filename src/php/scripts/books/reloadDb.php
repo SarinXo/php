@@ -1,5 +1,5 @@
 <?php
-    require_once("../../db.php");
+require_once(realpath(dirname(__FILE__) . '/../../db.php'));
     header('Refresh: 3; URL=http://localhost/pages/homepage/homepage.php');
     echo '<senter>Успешный бекап. Возврат на главную страницу...</senter> ';
 
@@ -10,7 +10,7 @@
     $query ->execute();
 
 $query = $connection->prepare("
-CREATE TABLE IF NOT EXISTS lab1.books
+CREATE TABLE IF NOT EXISTS firsova.books
 (
     isbn VARCHAR(13) NOT NULL PRIMARY KEY,
     author VARCHAR(50),
@@ -20,7 +20,7 @@ CREATE TABLE IF NOT EXISTS lab1.books
 $query ->execute();
 
 $query = $connection->prepare("
-CREATE TABLE IF NOT EXISTS lab1.customers
+CREATE TABLE IF NOT EXISTS firsova.customers
 (
     id SERIAL PRIMARY KEY ,
     name VARCHAR(60) NOT NULL ,
@@ -30,7 +30,7 @@ CREATE TABLE IF NOT EXISTS lab1.customers
 $query ->execute();
 
 $query = $connection->prepare("
-CREATE TABLE IF NOT EXISTS lab1.book_reviews
+CREATE TABLE IF NOT EXISTS firsova.book_reviews
 (
     isbn VARCHAR(13) NOT NULL
         REFERENCES lab1.books(isbn) ON DELETE CASCADE,

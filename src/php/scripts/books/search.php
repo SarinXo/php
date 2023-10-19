@@ -1,5 +1,5 @@
 <?php
-	require_once("../../db.php");
+require_once(realpath(dirname(__FILE__) . '/../../db.php'));
 
 	if(!isset($_REQUEST['searchType']) || !isset($_REQUEST['searchQuery']))
 	{
