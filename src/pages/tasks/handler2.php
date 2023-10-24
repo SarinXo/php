@@ -3,28 +3,24 @@ require_once("../../php/db.php");
 
 $searchType = $_REQUEST["searchType"];
 
-$Id = $connection->prepare("
-        SELECT customer_id
-    ");
-
 switch ($searchType) {
     case "task1":
         $query = $connection->prepare("
-                UPDATE orders
-    SET amount = orders.amount*0.9
-        WHERE orders.customer_id =
-(SELECT orders.id
-    FROM orders
-        WHERE orders.customer_id = (SELECT users.customer_id
-                                         FROM users
-                                            WHERE users.login = '" . $_COOKIE["login"] . "')
-        AND orders.date >= '2006-07-01'
-        AND orders.date <= '2006-09-20');
+               UPDATE orders
+SET amount = orders.amount*0.9
+WHERE orders.customer_id IN
+      (SELECT o.customer_id
+       FROM (SELECT * FROM orders) as o
+       WHERE o.customer_id = (SELECT users.customer_id
+                                   FROM users
+                                   WHERE users.login = '" . $_COOKIE["login"] . "')
+         AND o.date >= '2006-07-01'
+         AND o.date <= '2006-09-20');
                 ");
         $query ->execute();
-        $query = $connection->prepare("SELECT amount
+        $query = $connection->prepare("SELECT *
     FROM orders
-WHERE orders.customer_id =
+WHERE orders.customer_id IN
       (SELECT orders.id
        FROM orders
        WHERE orders.customer_id = (SELECT users.customer_id
@@ -53,39 +49,12 @@ WHERE orders.customer_id =
         break;
     case "task2":
         $q = $connection->prepare("
-                    SELECT *
-    FROM firsova.books
-    WHERE isbn = (
-        SELECT s.isbn
-        FROM(
-                SELECT isbn, SUM(quantity) AS q
-                FROM firsova.order_items
-                WHERE order_items.order_id IN
-                      (SELECT orders.id
-                       FROM orders
-                       WHERE orders.customer_id =
-                             (SELECT users.customer_id
-                              FROM users
-                              WHERE users.login = '" . $_COOKIE["login"] . "'))
-                GROUP BY isbn
-        ) AS s
-        WHERE s.q =(
-            SELECT MIN(q)
-            FROM (
-                    SELECT SUM(quantity) AS q
-                    FROM firsova.order_items
-                    WHERE order_items.order_id IN
-                              (SELECT orders.id
-                               FROM orders
-                               WHERE orders.customer_id =
-                                              (SELECT users.customer_id
-                                               FROM users
-                                               WHERE users.login = '" . $_COOKIE["login"] . "'))
-                     GROUP BY isbn
-                 ) AS i 
-        )
-        LIMIT 1
-    );");
+        
+DELETE
+    FROM orders
+WHERE orders.amount <1500
+AND orders.customer_id = 2;
+      ");
         $q ->execute();
 
         while ($row = $q->fetch(PDO::FETCH_ASSOC))

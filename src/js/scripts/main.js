@@ -15,7 +15,7 @@ $(document).ready(function()
 	var loading = false;
 	$(window).scroll(function()
 	{
-		if ($(window).scrollTop() == $(document).height() - $(window).height())
+		if ($(window).scrollTop() >= $(document).height() - $(window).height() -1)
 		{
 			if(loading === false)
 			{
